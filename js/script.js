@@ -17,7 +17,7 @@ const preguntas = [
         ]
     },
     {
-        pregunta: "¿Qué haces cuando el camión va tan lleno que hasta tienes que irte con un pie afuera?",
+        pregunta: "¿Qué haces cuando el camión va tan lleno que hasta tienes que ir con un pie afuera?",
         opciones: [
             { texto: "Aprovecho para hacer ejercicio isométrico agarrándome del tubo 💪", tipo: "pulpo" },
             { texto: "Me disperso entre la gente y me voy a un viaje astral hasta mi parada 🕶️", tipo: "antisocial" },
@@ -37,22 +37,22 @@ const preguntas = [
         opciones: [
             { texto: "¿Este sí va para el Centro? (aunque ya lo sabes) 🏫", tipo: "toxico" },
             { texto: "¡Bajan! 🗣️", tipo: "estratega" },
-            { texto: "No puedo ceder asiteno, yo también me siento mal (pero en realidad estás bien) 👌", tipo: "mapache" }
+            { texto: "No puedo ceder asiento, yo también me siento mal (pero en realidad estás bien) 👌", tipo: "mapache" }
         ]
     },
     {
         pregunta: "¿Qué es lo peor que te puede pasar en el camión?",
         opciones: [
             { texto: "Que se suba el vendedor de chicles y ocupen toda la puerta 🍬", tipo: "termometro" },
-            { texto: "Que el camión se descompomga EN MEDIO de la calle 🔧", tipo: "toxico" },
-            { texto: "Que mi crush me vea mientras me hecho un sueñito 😴", tipo: "antisocial" }
+            { texto: "Que el camión se descomponga EN MEDIO de la calle 🔧", tipo: "toxico" },
+            { texto: "Que mi crush me vea mientras me echo un sueñito 😴", tipo: "antisocial" }
         ]
     },
     {
         pregunta: "¿Qué objeto mágico salvó tu vida en el camión?",
         opciones: [
             { texto: "Mi escudo de <<No me gusta hablar>> (mis audífonos) 🎧", tipo: "antisocial" },
-            { texto: "La app dónde veo a qué hora pasa mi camión (que nunca funciona) 📱", tipo: "toxico" },
+            { texto: "La app donde veo a qué hora pasa mi camión (que nunca funciona) 📱", tipo: "toxico" },
             { texto: "Un snack que me encontré en mi mochila 🍬", tipo: "mapache" }
         ]
     },
@@ -99,17 +99,16 @@ const preguntas = [
     {
         pregunta: "¿Cuál es tu superpoder en hora pico?",
         opciones: [
-            { texto: "Agunantar la respiración cuando no hay espacio 👃", tipo: "pulpo" },
+            { texto: "Aguantar la respiración cuando no hay espacio 👃", tipo: "pulpo" },
             { texto: "Encontrar el único asiento libre con mi radar integrado 🎯", tipo: "vip" },
             { texto: "Hacer que mi mochila ocupe 2 lugares (evil laugh) 😈", tipo: "antisocial" }
         ]
     },
-
     {
-        pregunta: "¿Con qué frase te identifocas más?",
+        pregunta: "¿Con qué frase te identificas más?",
         opciones: [
             { texto: "El camión es tóxico, pero es mi único medio para moverme 💔", tipo: "toxico" },
-            { texto: "Me duermo más agusto en el camión que en mi casa 😴", tipo: "leon" },
+            { texto: "Me duermo más a gusto en el camión que en mi casa 😴", tipo: "leon" },
             { texto: "Prefiero irme en camión porque sale más barato 💸", tipo: "mapache" }
         ]
     },
@@ -135,7 +134,7 @@ const resultados = {
     },
     pulpo: {
         titulo: "🐙 El Pulpo Frenético",
-        descripcion: "Te agarras del único tubo disponible, y si no hay, te quedas en la puerta con un pie afuera, aunque a veces terminas enredado como verdadero molusko. Dominas el arte del equilibrio y te bajas del camión en movimiento.",
+        descripcion: "Te agarras del único tubo disponible, y si no hay, te quedas en la puerta con un pie afuera, aunque a veces terminas enredado como verdadero molusco. Dominas el arte del equilibrio y te bajas del camión en movimiento.",
         civi: "Con CIVI, sabrás qué camiones tienen mejor suspensión (para viajar como humano, no como pulpo).",
         clase: "pulpo",
         imagen: "contenido/imagenes/pulpo.jpeg"
@@ -149,13 +148,13 @@ const resultados = {
     },
     antisocial: {
         titulo: "🎧 El Gato Antisocial",
-        descripcion: "Tus audífonos son tus reales. Nadie se atreve a interrumpir tu playlist de música mientras vas mirando por la ventana, evitas a toda costa a la señora que habla sobre la misa del domingo.",
-        civi: "CIVI te dirá qué horarios son más tranquilos (para evitar pasajeros que interrumpan su viaje con música).",
+        descripcion: "Tus audífonos son tu escudo. Nadie se atreve a interrumpir tu playlist de música mientras vas mirando por la ventana, evitas a toda costa a la señora que habla sobre la misa del domingo.",
+        civi: "CIVI te dirá qué horarios son más tranquilos (para evitar pasajeros que interrumpan tu viaje con conversaciones).",
         clase: "antisocial",
         imagen: "contenido/imagenes/gato.jpeg"
     },
     vip: {
-        titulo: "😎 El perro VIP",
+        titulo: "😎 El Perro VIP",
         descripcion: "Hasta el chofer te saluda por tu nombre. Tienes asiento reservado (mentalmente) y conoces todos los chismes de la ruta. Eres una leyenda viva del camión.",
         civi: "CIVI te dará acceso a datos exclusivos de rutas (para mantener tu estatus de leyenda).",
         clase: "vip",
@@ -163,7 +162,7 @@ const resultados = {
     },
     termometro: {
         titulo: "🌡️ El Camaleón Térmico",
-        descripcion: "Sufres con cada cambio de clima, si está el sol, te asoleas y si están las nubes te agripas. Desde el infierno del asfalto hasta el ártico con ventanas abiertas, tu cuerpo registra cada grado de incomodidad.",
+        descripcion: "Sufres con cada cambio de clima: si está el sol, te asoleas; y si están las nubes, te agripas. Desde el infierno del asfalto hasta el ártico con ventanas abiertas, tu cuerpo registra cada grado de incomodidad.",
         civi: "CIVI te recomendará camiones con aire o ventanas (para no derretirte en verano).",
         clase: "termometro",
         imagen: "contenido/imagenes/camaleon.jpeg"
@@ -171,9 +170,9 @@ const resultados = {
     estratega: {
         titulo: "📢 El Chango Gritón",
         descripcion: "Tu ¡BAJAN! se escucha hasta Silao. Dominas el arte de abrirte paso entre la multitud con un simple <<ahí comper eh>>.",
-        civi: "CIVI te avisará cuándo está por llegar tu parada (para que no te pongas ronco de la garganta).",
+        civi: "CIVI te avisará cuándo está por llegar tu parada (para que no te pongas ronco de tanto gritar).",
         clase: "estratega",
-        imagen: "contenido/imagenes/chango.jpeg"
+        imagen: "contenido/imagenes/serpiente.jpeg"
     },
     toxico: {
         titulo: "💔 La Serpiente Tóxica",
@@ -183,6 +182,19 @@ const resultados = {
         imagen: "contenido/imagenes/serpiente.jpeg"
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Variables globales
 let preguntaActual = 0;
