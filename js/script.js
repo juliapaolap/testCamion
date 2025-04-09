@@ -37,7 +37,7 @@ const preguntas = [
         opciones: [
             { texto: "¿Este sí va para el Centro? (aunque ya lo sabes) 🏫", tipo: "toxico" },
             { texto: "¡Bajan! 🗣️", tipo: "estratega" },
-            { texto: "No puedo ceder asiteno, yo también me siento mal (pero en realidad estás bien) 👌", tipo: "mapache" }
+            { texto: "No puedo ceder asiento, yo también me siento mal (pero en realidad estás bien) 👌", tipo: "mapache" }
         ]
     },
     {
@@ -99,14 +99,14 @@ const preguntas = [
     {
         pregunta: "¿Cuál es tu superpoder en hora pico?",
         opciones: [
-            { texto: "Agunantar la respiración cuando no hay espacio 👃", tipo: "pulpo" },
+            { texto: "Aguantar la respiración cuando no hay espacio 👃", tipo: "pulpo" },
             { texto: "Encontrar el único asiento libre con mi radar integrado 🎯", tipo: "vip" },
             { texto: "Hacer que mi mochila ocupe 2 lugares (evil laugh) 😈", tipo: "antisocial" }
         ]
     },
 
     {
-        pregunta: "¿Con qué frase te identifocas más?",
+        pregunta: "¿Con qué frase te identificas más?",
         opciones: [
             { texto: "El camión es tóxico, pero es mi único medio para moverme 💔", tipo: "toxico" },
             { texto: "Me duermo más agusto en el camión que en mi casa 😴", tipo: "leon" },
