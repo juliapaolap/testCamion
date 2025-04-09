@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Resultado - Test de Viajero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos para los diferentes tipos de resultados */
+        .mapache .card-body { background-color: #f8e8d0; }
+        .pulpo .card-body { background-color: #e0f0ff; }
+        .leon .card-body { background-color: #fff2cc; }
+        .antisocial .card-body { background-color: #f0f0f0; }
+        .vip .card-body { background-color: #ffe6ff; }
+        .termometro .card-body { background-color: #ffe0e0; }
+        .estratega .card-body { background-color: #e0ffe0; }
+        .toxico .card-body { background-color: #f0e0e0; }
+        
+        .resultado-imagen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Nuevos estilos para los botones */
+        .btn-volver {
+            background: linear-gradient(45deg, #6cace4, #249c9c);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 172, 228, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-volver::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #249c9c, #6cace4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn-volver span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-volver:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(108, 172, 228, 0.4);
+            color: white;
+        }
+
+        .btn-volver:hover::before {
+            opacity: 1;
+        }
+
+        .btn-compartir {
+            background: linear-gradient(45deg, #e44484, #d45464);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(228, 68, 132, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-compartir::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #d45464, #e44484);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn-compartir:hover {
+            background: linear-gradient(45deg, #d45464, #e44484);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(228, 68, 132, 0.4);
+            color: white;
+        }
+
+        .btn-compartir:hover::before {
+            opacity: 1;
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid #a0aec0;
+            color: #4a5568;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #a0aec0;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(160, 174, 192, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="resultado-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div id="resultadoCard" class="card">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 id="resultadoTitulo" class="resultado-titulo text-center mb-4"></h2>
+                            <div id="resultadoImagen" class="resultado-imagen mb-4 text-center">
+                                <!-- Imagen se insertará aquí -->
+                            </div>
+                            <div class="resultado-texto bg-white p-4 rounded">
+                                <p id="resultadoDescripcion" class="resultado-descripcion mb-4"></p>
+                                <div class="civi-sugerencia p-3 rounded">
+                                    <h5 class="text-center mb-3">💡 Sugerencia CIVI para ti:</h5>
+                                    <p id="resultadoCIVI" class="resultado-civi text-center"></p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+                                <a href="index.html" class="btn btn-comenzar">
+                                    <i class="fas fa-home me-2"></i> Volver al inicio
+                                </a>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+                                <a href="creditos.html" class="btn btn-volver">
+                                    <i class="fas fa-home me-2"></i> Ver créditos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Resultados posibles
+        const resultados = {
+            mapache: {
+                titulo: "🦝 El Mapache Comelón",
+                descripcion: "Vas olfateando antojos en cada parada. Tu instinto te lleva directo a los puestos de comida cerca de las rutas, porque viajar con el estómago rugiendo no es opción.",
+                civi: "CIVI te avisará dónde hay puestos de comida cerca de tu ruta (para que no viajes con el estómago vacío).",
+                clase: "mapache",
+                imagen: "contenido/imagenes/mapache.jpeg"
+            },
+            pulpo: {
+                titulo: "🐙 El Pulpo Frenético",
+                descripcion: "Te agarras del único tubo disponible, y si no hay, te quedas en la puerta con un pie afuera, aunque a veces terminas enredado como verdadero molusco. Dominas el arte del equilibrio y te bajas del camión en movimiento.",
+                civi: "Con CIVI, sabrás qué camiones tienen mejor suspensión (para viajar como humano, no como pulpo).",
+                clase: "pulpo",
+                imagen: "contenido/imagenes/pulpo.jpeg"
+            },
+            leon: {
+                titulo: "🦁 El León Dormilón",
+                descripcion: "Duermes a cualquier hora, en cualquier lugar, incluso parado. Tu habilidad para descansar en medio del caos es legendaria, aunque a veces termines en Silao porque se te pasó tu parada.",
+                civi: "CIVI te despertará con una alerta antes de tu parada (para que no termines en Silao).",
+                clase: "leon",
+                imagen: "contenido/imagenes/leon.jpeg"
+            },
+            antisocial: {
+                titulo: "🎧 El Gato Asocial",
+                descripcion: "Tus audífonos son tu escudo. Nadie se atreve a interrumpir tu playlist de música mientras vas mirando por la ventana, evitas a toda costa a la señora que habla sobre la misa del domingo.",
+                civi: "CIVI te dirá qué horarios son más tranquilos (para evitar pasajeros que interrumpan tu viaje con conversaciones).",
+                clase: "antisocial",
+                imagen: "contenido/imagenes/gato.jpeg"
+            },
+            vip: {
+                titulo: "😎 El Perro VIP",
+                descripcion: "Hasta el chofer te saluda por tu nombre. Tienes asiento reservado (mentalmente) y conoces todos los chismes de la ruta. Eres una leyenda viva del camión.",
+                civi: "CIVI te dará acceso a datos exclusivos de rutas (para mantener tu estatus de leyenda).",
+                clase: "vip",
+                imagen: "contenido/imagenes/perro.jpeg"
+            },
+            termometro: {
+                titulo: "🌡️ El Camaleón Térmico",
+                descripcion: "Sufres con cada cambio de clima: si está el sol, te asoleas; y si están las nubes, te agripas. Desde el infierno del asfalto hasta el ártico con ventanas abiertas, tu cuerpo registra cada grado de incomodidad.",
+                civi: "CIVI te recomendará camiones con aire o ventanas (para no derretirte en verano).",
+                clase: "termometro",
+                imagen: "contenido/imagenes/camaleon.jpeg"
+            },
+            estratega: {
+                titulo: "📢 El Chango Gritón",
+                descripcion: "Tu ¡BAJAN! se escucha hasta Silao. Dominas el arte de abrirte paso entre la multitud con un simple <<ahí comper eh>>.",
+                civi: "CIVI te avisará cuándo está por llegar tu parada (para que no te pongas ronco de tanto gritar).",
+                clase: "estratega",
+                imagen: "contenido/imagenes/chango.jpeg"
+            },
+            toxico: {
+                titulo: "💔 La Serpiente Tóxica",
+                descripcion: "Odias el transporte... pero lo extrañas cuando es fin de semana. Te quieres comprar un carro o una moto, pero el precio del pasaje no te deja. Es una relación de amor-odio donde prometes dejarlo cada lunes, pero siempre regresas el martes.",
+                civi: "CIVI te ayudará a reconciliarte con rutas eficientes (y menos frenazos).",
+                clase: "toxico",
+                imagen: "contenido/imagenes/serpiente.jpeg"
+            }
+        };
+
+        // Función para mostrar el resultado
+        function mostrarResultado() {
+            // Obtener el tipo de resultado de la URL
+            const params = new URLSearchParams(window.location.search);
+            const tipoResultado = params.get('resultado');
+            
+            if (tipoResultado && resultados[tipoResultado]) {
+                const resultado = resultados[tipoResultado];
+                
+                // Aplicar clase CSS según el tipo de resultado
+                const resultadoCard = document.getElementById('resultadoCard');
+                resultadoCard.classList.add(resultado.clase);
+                
+                // Mostrar los datos del resultado
+                document.getElementById('resultadoTitulo').textContent = resultado.titulo;
+                document.getElementById('resultadoDescripcion').textContent = resultado.descripcion;
+                document.getElementById('resultadoCIVI').textContent = resultado.civi;
+                
+                // Crear y agregar la imagen
+                const img = document.createElement('img');
+                img.src = resultado.imagen;
+                img.alt = resultado.titulo;
+                img.className = 'img-fluid shadow';
+                document.getElementById('resultadoImagen').appendChild(img);
+            } else {
+                // Redirigir al inicio si no hay resultado válido
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Función para compartir resultado
+        function compartirResultado() {
+            const params = new URLSearchParams(window.location.search);
+            const tipoResultado = params.get('resultado');
+            
+            if (!tipoResultado || !resultados[tipoResultado]) return;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mi resultado del test de viajero',
+                    text: `Soy ${resultados[tipoResultado].titulo}. ¡Descubre qué tipo de viajero del transporte público eres!`,
+                    url: window.location.href
+                }).catch(err => {
+                    console.log('Error al compartir:', err);
+                });
+            } else {
+                // Fallback para navegadores que no soportan Web Share API
+                const shareUrl = `https://twitter.com/intent/tweet?text=Soy ${encodeURIComponent(resultados[tipoResultado].titulo)}. ¡Descubre qué tipo de viajero del transporte público eres!&url=${encodeURIComponent(window.location.href)}`;
+                window.open(shareUrl, '_blank');
+            }
+        }
+
+        // Eventos cuando el DOM está cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Página de resultados
+            if (document.getElementById('resultadoCard')) {
+                mostrarResultado();
+                
+                // Evento del botón compartir
+                document.getElementById('btnCompartir').addEventListener('click', compartirResultado);
+            }
+        });
+    </script>
+</body>
+</html>
